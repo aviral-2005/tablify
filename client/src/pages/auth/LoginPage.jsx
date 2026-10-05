@@ -26,7 +26,15 @@ export default function LoginPage() {
         navigate('/admin/dashboard');
       }
     } catch (err) {
-      showError(err.response?.data?.message || 'Login failed. Please check your credentials.');
+      let msg = 'Login failed. Please check your credentials.';
+      if (err.response) {
+        msg = err.response.data?.message || `Server returned error (${err.response.status}).`;
+      } else if (err.request) {
+        msg = 'Cannot connect to backend server. Please check backend deployment or URL configuration.';
+      } else {
+        msg = err.message || msg;
+      }
+      showError(msg);
     } finally {
       setLoading(false);
     }
