@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-gray-900 bg-gray-50 antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
+  }
+}
+
+@layer components {
+  /* Button base */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-600 text-white hover:bg-brand-700 focus:ring-brand-500 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply btn bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 focus:ring-gray-200 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply btn text-gray-600 hover:bg-gray-100 focus:ring-gray-200 active:scale-95;
+  }
+
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700 focus:ring-red-500 active:scale-95;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white rounded-2xl border border-gray-100 shadow-sm;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-200 hover:shadow-md hover:-translate-y-0.5;
+  }
+
+  /* Input */
+  .input {
+    @apply w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all duration-150;
+  }
+
+  .input-error {
+    @apply input border-red-300 focus:ring-red-400;
+  }
+
+  /* Label */
+  .label {
+    @apply block text-sm font-medium text-gray-700 mb-1.5;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-new { @apply badge bg-blue-100 text-blue-700; }
+  .badge-accepted { @apply badge bg-indigo-100 text-indigo-700; }
+  .badge-preparing { @apply badge bg-yellow-100 text-yellow-700; }
+  .badge-ready { @apply badge bg-green-100 text-green-700; }
+  .badge-completed { @apply badge bg-gray-100 text-gray-600; }
+  .badge-cancelled { @apply badge bg-red-100 text-red-700; }
+
+  /* Veg / Non-veg indicators */
+  .veg-dot {
+    @apply w-4 h-4 rounded flex items-center justify-center flex-shrink-0 border border-green-600;
+  }
+
+  .nonveg-dot {
+    @apply w-4 h-4 rounded flex items-center justify-center flex-shrink-0 border border-red-600;
+  }
+
+  /* Status pill for order tracking */
+  .status-step {
+    @apply flex items-center gap-3 py-3;
+  }
+
+  .status-step-icon {
+    @apply w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300;
+  }
+
+  .status-step-icon.done {
+    @apply bg-green-100 text-green-600;
+  }
+
+  .status-step-icon.active {
+    @apply bg-brand-100 text-brand-600 ring-2 ring-brand-300 ring-offset-1;
+  }
+
+  .status-step-icon.pending {
+    @apply bg-gray-100 text-gray-400;
+  }
+
+  /* Skeleton loader */
+  .skeleton {
+    @apply animate-pulse bg-gray-200 rounded-lg;
+  }
+
+  /* Toast */
+  .toast-container {
+    @apply fixed bottom-4 right-4 z-50 flex flex-col gap-2;
+  }
+
+  /* Kitchen order card status classes */
+  .kitchen-card-new {
+    @apply border-l-4 border-l-blue-500 bg-blue-50/30;
+  }
+
+  .kitchen-card-accepted {
+    @apply border-l-4 border-l-indigo-500;
+  }
+
+  .kitchen-card-preparing {
+    @apply border-l-4 border-l-yellow-500;
+  }
+
+  .kitchen-card-ready {
+    @apply border-l-4 border-l-green-500;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
